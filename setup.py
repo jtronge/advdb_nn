@@ -10,5 +10,7 @@ setup(
     package_dir={'': 'src'},
     install_requires=[
         'requests',
+        'sklearn',
+        'numpy',
     ],
 )
