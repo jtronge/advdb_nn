@@ -39,20 +39,19 @@ class IVF:
                 c = self.X[centroids[c_i]]
             self.centroids.append(c)
 
-    def query(self, q, top_k):
-        """Query the top-k vectors closest to q."""
-        # Find the closest centroid
-        min_d = None
-        min_c_i = None
-        for c_i, c in enumerate(self.centroids):
-            d = dist2(q, c)
-            if min_d is None or min_c_i is None or d < min_d:
-                min_d = d
-                min_c_i = c_i
-        assert min_c_i is not None
-        # Now compute the distances between q and all those in the inverted
-        # index
-        x_dist = [(x, dist2(self.X[x], q)) for x in self.ivf[min_c_i]]
+    def query(self, q, top_k, c_search=1):
+        """Query the top-k vectors closest to q.
+
+        :param top_k: number of result indices to return in a list
+        :param c_search: number of centroids to search
+        """
+        # Find the closest `c_search` centroids to q
+        cs = [(c_i, dist2(q, c)) for c_i, c in enumerate(self.centroids)]
+        cs.sort(key=lambda c: c[1])
+        cs = [c[0] for c in cs[:c_search]]
+        # Now compute the distances between q and all those closest to the given
+        # centroids in the index
+        x_dist = [(x, dist2(self.X[x], q)) for c_i in cs for x in self.ivf[c_i]]
         x_dist.sort(key=lambda x_d: x_d[1])
         assert len(x_dist) >= top_k
         return [x_d[0] for x_d in x_dist[:top_k]]
