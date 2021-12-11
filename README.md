@@ -10,3 +10,7 @@ running the algorithm.
 ## Extra Datasets
 
 For getting the SIFT1M datasets: see <http://corpus-texmex.irisa.fr/>.
+
+## Testing
+
+...
