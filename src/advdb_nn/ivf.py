@@ -55,3 +55,7 @@ class IVF:
         x_dist.sort(key=lambda x_d: x_d[1])
         assert len(x_dist) >= top_k
         return [x_d[0] for x_d in x_dist[:top_k]]
+
+    def batch(self, Q, top_k, **kwargs):
+        """Run the Q queries and return the top_k results for each."""
+        return [self.query(q, top_k, **kwargs) for q in Q]
