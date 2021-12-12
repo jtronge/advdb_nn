@@ -12,5 +12,6 @@ setup(
         'requests',
         'sklearn',
         'numpy',
+        'pyyaml',
     ],
 )

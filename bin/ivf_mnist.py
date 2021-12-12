@@ -9,7 +9,7 @@ from advdb_nn.ivf import IVF
 
 parser = argparse.ArgumentParser(description='IVF evaluation code')
 parser.add_argument('limit', default=30, type=int,
-                    help='number of queries to run')
+                    help='number of query_data to run')
 parser.add_argument('top_k', default=10, type=int,
                     help='top k results to return')
 parser.add_argument('c_search', default=2, type=int,
@@ -37,7 +37,7 @@ for test_q in test[:LIMIT]:
 
 print('Building IVF index...')
 ivf = IVF(X, 10)
-print('Running IVF queries...')
+print('Running IVF query_data...')
 total_recall = 0.0
 for test_q_i, test_q in enumerate(test[:LIMIT]):
     print('Query', test_q_i, 'of', LIMIT)
