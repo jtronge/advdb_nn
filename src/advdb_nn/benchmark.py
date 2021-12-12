@@ -1,6 +1,6 @@
 """Benchmarking code."""
 import argparse
-import json
+import pickle
 import yaml
 import os
 import time
@@ -65,11 +65,11 @@ def main():
         index_params = benchmark['index_params']
         params = benchmark['params']
         # Build the index
-        start = int(time.time())
+        start = time.time()
         # ivf = IVF(truth.data, 10)
         class_ = IVF if benchmark['version'] == 'IVF' else IVFv2
         ivf = class_(truth.data, **index_params)
-        end = int(time.time())
+        end = time.time()
         index_build_time = end - start
         print('Index build time (seconds):', index_build_time)
         # Run each batch
@@ -84,9 +84,9 @@ def main():
             x = i * batch_size
             k = (i + 1) * batch_size
             qs = truth.query_data[x:k]
-            start = int(time.time())
+            start = time.time()
             result = ivf.batch(qs, top_k=truth.top_k, **params)
-            end = int(time.time())
+            end = time.time()
             query_time = end - start
             print('Total time (seconds):', query_time)
             query_times.append(query_time)
@@ -95,10 +95,10 @@ def main():
             print('Average recall:', average_recall)
             recall_rates.append(average_recall)
         # Dump the results
-        with open(benchmark['output_file'], 'w') as fp:
-            json.dump({
+        with open(benchmark['output_file'], 'wb') as fp:
+            pickle.dump({
                 'title': title,
                 'index_build_time': index_build_time,
                 'query_times': query_times,
                 'recall_rates': recall_rates,
-            }, fp, indent=4)
+            }, fp)

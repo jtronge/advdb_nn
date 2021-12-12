@@ -9,7 +9,7 @@ benchmarks:
     query_limit: 10000
     data_set_type: 'MNIST'
     top_k: 10
-    output_file: 'mnist.json'
+    output_file: 'mnist.pkl'
     # Number of queries to run per batch
     batch_size: 10000
     params:
@@ -20,7 +20,7 @@ benchmarks:
       bits: 4
     version: 'IVFv2'
   - title: 'SIFT Benchmark 1'
-    database_file: 'sift.db'
+    database_file: 'sift2.db'
     data_set_file: 'datasets/sift/sift_query.fvecs'
     # Limit on the data set size
     data_set_limit: 10000
@@ -29,7 +29,7 @@ benchmarks:
     query_limit: 10000
     data_set_type: 'SIFT'
     top_k: 100
-    output_file: 'sift.json'
+    output_file: 'sift.pkl'
     batch_size: 10000
     params:
       c_search: 2
