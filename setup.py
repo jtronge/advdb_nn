@@ -7,7 +7,10 @@ setup(
     # scripts=[],
     # Install the benchmark script as ivf-benchmark
     entry_points={
-        'console_scripts': ['ivf-benchmark=advdb_nn.benchmark:main'],
+        'console_scripts': [
+            'ivf-benchmark=advdb_nn.benchmark:main',
+            'ivf-convert-truth=advdb_nn.truth:main',
+        ],
     },
     # Find all packages in the source directory
     packages=find_packages('src'),

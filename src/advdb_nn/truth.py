@@ -1,4 +1,5 @@
 """Truth calculation, dumping and loading."""
+import argparse
 import pickle
 import time
 from advdb_nn.util import dist2
@@ -45,3 +46,23 @@ def load_truth(fname):
     """Load a precalculated truth from a file."""
     with open(fname, 'rb') as fp:
         return pickle.load(fp)
+
+
+def main():
+    """Read in a truth object and dump a dict."""
+    parser = argparse.ArgumentParser(description='convert a truth object to a dict')
+    parser.add_argument('input', help='Truth object input pickle file')
+    parser.add_argument('output', help='file to output dictionary to')
+    args = parser.parse_args()
+
+    truth = load_truth(args.input)
+    # Write out a dict version of the Truth object
+    with open(args.output, 'wb') as fp:
+        pickle.dump({
+            'data': truth.data,
+            'query_data': truth.query_data,
+            'top_k': truth.top_k,
+            'results': truth.results,
+            'batch_size': truth.batch_size,
+            'times_per_batch': truth.times_per_batch,
+        }, fp)

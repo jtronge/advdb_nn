@@ -1,10 +1,10 @@
 benchmarks:
   - title: 'MNIST Benchmark_IVFv2'
     database_file: 'mnist-db-1.pkl'
-    data_set_file: 'datasets\\MNIST\\train-images-idx3-ubyte'
+    data_set_file: 'datasets\\datasets\\MNIST\\train-images-idx3-ubyte'
     # Limit on the data set size
     data_set_limit: 60000
-    query_file: 'datasets\\MNIST\\t10k-images-idx3-ubyte'
+    query_file: 'datasets\\datasets\\MNIST\\t10k-images-idx3-ubyte'
     # Limit on the query count
     query_limit: 10000
     data_set_type: 'MNIST'
@@ -21,10 +21,10 @@ benchmarks:
     version: 'IVFv2'
   - title: 'MNIST Benchmark_IVF'
     database_file: 'mnist-db-1.pkl'
-    data_set_file: 'datasets\\MNIST\\train-images-idx3-ubyte'
+    data_set_file: 'datasets\\datasets\\MNIST\\train-images-idx3-ubyte'
     # Limit on the data set size
     data_set_limit: 60000
-    query_file: 'datasets\\MNIST\\t10k-images-idx3-ubyte'
+    query_file: 'datasets\\datasets\\MNIST\\t10k-images-idx3-ubyte'
     # Limit on the query count
     query_limit: 10000
     data_set_type: 'MNIST'
@@ -39,12 +39,12 @@ benchmarks:
     version: 'IVF'
   - title: 'SIFT Benchmark_IVFv2'
     database_file: 'sift-db-1.pkl'
-    data_set_file: 'datasets\\sift\\sift_base.fvecs'
+    data_set_file: 'datasets\\datasets\\sift\\sift_base.fvecs'
     # Limit on the data set size
     # data_set_limit: 1000000
     data_set_limit: 100000
     # data_set_limit: 10000
-    query_file: 'datasets\\sift\\sift_learn.fvecs'
+    query_file: 'datasets\\datasets\\sift\\sift_learn.fvecs'
     # Limit on the query count
     query_limit: 1000
     data_set_type: 'SIFT'
@@ -60,12 +60,12 @@ benchmarks:
     version: 'IVFv2'
   - title: 'SIFT Benchmark_IVF'
     database_file: 'sift-db-1.pkl'
-    data_set_file: 'datasets\\sift\\sift_base.fvecs'
+    data_set_file: 'datasets\\datasets\\sift\\sift_base.fvecs'
     # Limit on the data set size
     # data_set_limit: 1000000
     data_set_limit: 100000
     # data_set_limit: 10000
-    query_file: 'datasets\\sift\\sift_learn.fvecs'
+    query_file: 'datasets\\datasets\\sift\\sift_learn.fvecs'
     # Limit on the query count
     query_limit: 1000
     data_set_type: 'SIFT'
