@@ -50,7 +50,8 @@ def main():
             compute_dump_truth(benchmark['database_file'],
                                data[:benchmark['data_set_limit']],
                                query_data[:benchmark['query_limit']],
-                               top_k=benchmark['top_k'])
+                               top_k=benchmark['top_k'],
+                               batch_size=benchmark['batch_size'])
         if args.brute_force_only:
             continue
         # Now run the benchmark
